@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dopamind — ADHD-friendly learning</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">🧠 Dopamind</div>
+    <button id="settingsBtn" class="icon-btn" title="Settings">⚙️</button>
+  </header>
+
+  <!-- Settings panel -->
+  <div id="settingsPanel" class="settings-panel hidden">
+    <label for="apiKeyInput">Claude API Key</label>
+    <input type="password" id="apiKeyInput" placeholder="sk-ant-..." autocomplete="off" />
+    <p class="hint">Your key is stored in this browser session only and never saved to any server.</p>
+    <button id="saveKeyBtn" class="btn-primary">Save</button>
+  </div>
+
+  <!-- Input section -->
+  <main>
+    <section id="inputSection">
+      <h1>Turn any content into focused learning.</h1>
+      <p class="subtitle">Paste an article, book chapter, or any text — Dopamind breaks it into chunks your brain can actually handle.</p>
+      <textarea id="textInput" placeholder="Paste your text here..."></textarea>
+      <div class="input-footer">
+        <span id="charCount" class="char-count">0 characters</span>
+        <button id="processBtn" class="btn-primary">Process →</button>
+      </div>
+    </section>
+
+    <!-- Output section -->
+    <section id="outputSection" class="hidden">
+      <div class="output-header">
+        <div>
+          <span id="chunkCounter" class="chunk-counter"></span>
+          <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+        </div>
+        <button id="resetBtn" class="btn-ghost">← New text</button>
+      </div>
+      <div id="chunksContainer"></div>
+    </section>
+
+    <!-- Loading -->
+    <div id="loadingState" class="loading hidden">
+      <div class="spinner"></div>
+      <p>Breaking it down for your brain...</p>
+    </div>
+
+    <!-- Error -->
+    <div id="errorState" class="error hidden">
+      <p id="errorMsg"></p>
+      <button id="retryBtn" class="btn-ghost">Try again</button>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
