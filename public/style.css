@@ -120,6 +120,7 @@ textarea::placeholder { color: var(--muted); }
   margin-top: 0.75rem;
 }
 .char-count { font-size: 0.8rem; color: var(--muted); }
+.input-actions { display: flex; gap: 0.5rem; align-items: center; }
 
 /* Buttons */
 .btn-primary {

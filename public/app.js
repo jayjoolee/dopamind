@@ -12,6 +12,7 @@ const saveKeyBtn = $('saveKeyBtn');
 const textInput = $('textInput');
 const charCount = $('charCount');
 const processBtn = $('processBtn');
+const demoBtn = $('demoBtn');
 const inputSection = $('inputSection');
 const outputSection = $('outputSection');
 const loadingState = $('loadingState');
@@ -40,7 +41,8 @@ textInput.addEventListener('input', () => {
 });
 
 // Process
-processBtn.addEventListener('click', process);
+processBtn.addEventListener('click', () => process());
+demoBtn.addEventListener('click', () => process({ demo: true }));
 retryBtn.addEventListener('click', () => {
   show(inputSection);
   hide(errorState);
@@ -53,18 +55,22 @@ resetBtn.addEventListener('click', () => {
   chunksContainer.innerHTML = '';
 });
 
-async function process() {
+async function process(opts = {}) {
+  const demo = opts.demo === true;
   const text = textInput.value.trim();
   const apiKey = apiKeyInput.value.trim() || sessionStorage.getItem('dopamind_key') || '';
 
-  if (!text) {
-    alert('Please paste some text first.');
-    return;
-  }
-  if (!apiKey) {
-    settingsPanel.classList.remove('hidden');
-    apiKeyInput.focus();
-    return;
+  // Demo mode skips the text + key requirements — it returns a sample result.
+  if (!demo) {
+    if (!text) {
+      alert('Please paste some text first.');
+      return;
+    }
+    if (!apiKey) {
+      settingsPanel.classList.remove('hidden');
+      apiKeyInput.focus();
+      return;
+    }
   }
 
   hide(inputSection);
@@ -75,7 +81,7 @@ async function process() {
     const res = await fetch('/api/process', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text, apiKey })
+      body: JSON.stringify({ text, apiKey, demo })
     });
 
     const data = await res.json();
