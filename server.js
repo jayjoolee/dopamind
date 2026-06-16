@@ -48,6 +48,8 @@ Break it into chunks of 150-250 words each. For each chunk, provide:
 2. The original chunk text (copy it exactly, unchanged)
 3. 3-4 key bullet points summarizing the main ideas in plain language
 
+IMPORTANT: Write the hook and key points in the SAME language as the input text. If the text is in Korean, write them in Korean; if English, in English. Always keep the "text" field exactly as the original.
+
 Respond ONLY with valid JSON. No explanation, no markdown. Just the JSON object:
 {
   "chunks": [
