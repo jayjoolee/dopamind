@@ -4,7 +4,22 @@
 
 **Dopamind** is an open-source, ADHD-friendly learning tool that transforms long-form content — PDFs, ebooks, articles — into focused, digestible learning experiences.
 
-Built by someone with ADHD, for people with ADHD (and honestly, anyone who struggles to get through long content).
+Built for anyone who struggles to focus on long content — which, in a world of endless feeds and notifications, is most of us.
+
+---
+
+## Try it (no API key needed)
+
+```bash
+git clone https://github.com/jayjoolee/dopamind.git
+cd dopamind
+npm install
+npm start
+```
+
+Open `http://localhost:3000` and click **✨ Try a demo (no key)** — you'll see exactly what Dopamind does to a piece of text, instantly, without signing up for anything.
+
+When you're ready to run it on your own content, add a Claude API key in ⚙️ Settings (it stays in your browser, never touches any server).
 
 ---
 
