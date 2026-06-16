@@ -29,12 +29,35 @@ const DEMO_RESPONSE = {
   ]
 };
 
+const DEMO_RESPONSE_KO = {
+  chunks: [
+    {
+      hook: "왜 당신은 늘 산만한가 — 당신 잘못이 아니다",
+      text: "The human brain wasn't designed for the modern information environment. For most of history, information was scarce and hard to obtain. Today we face the opposite problem: an endless firehose of articles, videos, and notifications competing for a finite amount of attention. This mismatch explains why so many people feel perpetually distracted.",
+      keyPoints: [
+        "인간의 뇌는 정보가 희소했던 환경에 맞게 진화했다",
+        "오늘날은 정반대 — 정보 과잉이 한정된 주의력을 두고 경쟁한다",
+        "그래서 만성적 산만함은 개인 의지의 문제가 아니라 구조적 불일치다"
+      ]
+    },
+    {
+      hook: "해결책은 의지력이 아니라 환경 설계다",
+      text: "Our attention systems evolved to detect novelty and threat, which made sense when a rustle in the grass might be a predator. But those same systems now fire constantly in response to pings and headlines. The result is a state of continuous partial attention. Reclaiming focus isn't about willpower alone; it's about redesigning the environment so that deep work becomes the path of least resistance rather than a constant uphill battle.",
+      keyPoints: [
+        "주의 시스템은 원래 새로움·위협을 감지하도록 진화했다 (풀숲 속 포식자)",
+        "그 시스템이 이제 알림·헤드라인에 끊임없이 반응해 '지속적 부분 주의' 상태를 만든다",
+        "핵심 지렛대는 의지가 아니라, 깊은 작업이 가장 쉬운 길이 되도록 환경을 설계하는 것"
+      ]
+    }
+  ]
+};
+
 app.post('/api/process', async (req, res) => {
-  const { text, apiKey, demo } = req.body;
+  const { text, apiKey, demo, lang } = req.body;
 
   // Demo mode: return a sample result without calling the API.
   if (demo) {
-    return res.json(DEMO_RESPONSE);
+    return res.json(lang === 'ko' ? DEMO_RESPONSE_KO : DEMO_RESPONSE);
   }
 
   if (!text || !apiKey) {

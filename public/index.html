@@ -9,22 +9,25 @@
 <body>
   <header>
     <div class="logo">🧠 Dopamind</div>
-    <button id="settingsBtn" class="icon-btn" title="Settings">⚙️</button>
+    <div class="header-actions">
+      <button id="langBtn" class="icon-btn" title="Language">한국어</button>
+      <button id="settingsBtn" class="icon-btn" title="Settings">⚙️</button>
+    </div>
   </header>
 
   <!-- Settings panel -->
   <div id="settingsPanel" class="settings-panel hidden">
-    <label for="apiKeyInput">Claude API Key</label>
+    <label id="apiKeyLabel" for="apiKeyInput">Claude API Key</label>
     <input type="password" id="apiKeyInput" placeholder="sk-ant-..." autocomplete="off" />
-    <p class="hint">Your key is stored in this browser session only and never saved to any server.</p>
+    <p id="keyHint" class="hint">Your key is stored in this browser session only and never saved to any server.</p>
     <button id="saveKeyBtn" class="btn-primary">Save</button>
   </div>
 
   <!-- Input section -->
   <main>
     <section id="inputSection">
-      <h1>Turn any content into focused learning.</h1>
-      <p class="subtitle">Paste an article, book chapter, or any text — Dopamind breaks it into chunks your brain can actually handle.</p>
+      <h1 id="h1Title">Turn any content into focused learning.</h1>
+      <p id="subtitle" class="subtitle">Paste an article, book chapter, or any text — Dopamind breaks it into chunks your brain can actually handle.</p>
       <textarea id="textInput" placeholder="Paste your text here..."></textarea>
       <div class="input-footer">
         <span id="charCount" class="char-count">0 characters</span>
@@ -50,7 +53,7 @@
     <!-- Loading -->
     <div id="loadingState" class="loading hidden">
       <div class="spinner"></div>
-      <p>Breaking it down for your brain...</p>
+      <p id="loadingText">Breaking it down for your brain...</p>
     </div>
 
     <!-- Error -->

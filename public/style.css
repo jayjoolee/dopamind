@@ -121,6 +121,8 @@ textarea::placeholder { color: var(--muted); }
 }
 .char-count { font-size: 0.8rem; color: var(--muted); }
 .input-actions { display: flex; gap: 0.5rem; align-items: center; }
+.header-actions { display: flex; gap: 0.5rem; align-items: center; }
+#langBtn { font-size: 0.8rem; }
 
 /* Buttons */
 .btn-primary {
